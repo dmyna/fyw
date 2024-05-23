@@ -1,0 +1,25 @@
+#!/bin/zsh
+# -------------------------------------------------- #
+#                       FYSM
+export FYSM_TEMP=/tmp/fysm
+export FYSM_PERMA_LOGS=/var/tmp/logs/
+export FYSM_PERMA_LOCKS=/var/tmp/locks
+
+# Locks
+export INIT_LOCK=$FYSM_TEMP/fysm_first_init.lock
+export TASKSLOCK=$FYSM_PERMA_LOCKS/tasks
+# Logs
+export INIT_LOGS="$PERMLOGSDIR"/init_scripts
+
+# -------------------------------------------------- #
+#                       FYPM
+
+export TW_DB=<path_to_taskwarrior>
+export TIMEWARRIORDB=<path_to_timewarrior>
+
+export WORKTIME=$(cat /var/tmp/current_work_time | sed 's/\s[->].*//g')
+
+export DUE_FILTER="\((due:today or due.after:today) and due.before:tomorrow)"
+export TW_FILTER="+ACTIVE or +OVERDUE or +Divisory or ($DUE_FILTER and (WT:Quantify or WT:NonSched))"
+
+# -------------------------------------------------- #

@@ -1,0 +1,26 @@
+#!/bin/zsh
+# ---------------------------------- #
+# Set this in your .zshrc file
+export FYW_DIR=<path_to_fyw_dir> # a good example: ~/.config/fyw
+export FYPM_DIR=<path_to_fypm_repo>
+export FYSM_DIR=<path_to_fysm_repo>
+# ---------------------------------- #
+
+
+# Add fypm and fysm to PATH
+export PATH=$PATH:$FYPM_DIR/scripts
+export PATH=$PATH:$FYSM_DIR/scripts
+source $FYW_DIR/config/vars
+
+
+source $FYW_DIR/config/aliases
+
+
+# Init some fysm scripts if it is the initialization of the system
+if test ! -e "$INIT_LOCK"; then
+    mkdir "$FYSM_TEMP"
+
+    source "$FYSM_DIR"/config/init_scheduler
+
+    echo "" > "$INIT_LOCK"
+fi
