@@ -10,6 +10,7 @@ alias ticart="$PKG timew start-correction"
 alias ticend="$PKG timew end-correction"
 
 # TaskWarrior
+alias twui="taskwarrior-tui"
 alias tals="_tals blist"
 alias talss="_tals alarms"
 alias ttals="task TYPE.not:SubTask -Ghost list"
