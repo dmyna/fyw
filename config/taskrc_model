@@ -1,3 +1,5 @@
+# Don't use variables here, it causes problems in polybar. Type the $TW_DB directly.
+data.location=
 # ------------------------------------------------------ #
 #                       FYPM
 regex=on
