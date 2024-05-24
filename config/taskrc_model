@@ -1,5 +1,6 @@
 # Don't use variables here, it causes problems in polybar. Type the $TW_DB directly.
 data.location=
+
 # ------------------------------------------------------ #
 #                       FYPM
 regex=on
@@ -25,13 +26,13 @@ report.recurring.sort=due+,urgency+,entry+
 
 # My Reports
 report.blist.columns=id,status.short,STYLE,TYPE,project,tags,WT,GOAL,wait.relative,due.relative,description,urgency
-report.blist.filter=WT.not:NonSched and -Ghost and -DELETED and -PARENT and -COMPLETED and TYPE.not:Event
+report.blist.filter=WT.not:NonSched! and -Ghost and -DELETED and -PARENT and -COMPLETED and TYPE.not:Event
 report.blist.sort=urgency-
 
 
 report.wlist.columns=id,status.short,STYLE,TYPE,project,tags,WT,GOAL,wait.relative,due.relative,description,urgency
 report.wlist.labels=ID,S,Style,Type,Project,Tags,Worktime,Goal,Wait,Due,Desc,Urg
-report.wlist.filter=((+ACTIVE or +OVERDUE or +Divisory or (((due:today or due.after:today) and due.before:tomorrow) and (WT:Quantify or WT:NonSched)) or ((WT:Essentials or WT:AllDay) and ((+TODAY and +INSTANCE) or (GOAL.after:2024-05-01 and GOAL.before:now and TYPE:Objective) or ((scheduled.after:today or scheduled:today) and scheduled.before:tomorrow)) and STYLE.not:Dionysian)) and status:pending) or (((due:today or due.after:today) and due.before:tomorrow) and WT:AllDay and (status.not:recurring and status.not:waiting))
+report.wlist.filter=((+ACTIVE or +OVERDUE or +Divisory or (((due:today or due.after:today) and due.before:tomorrow) and (WT:Quantify or WT:NonSched!)) or ((WT:PreWork or WT:AllDay or (ALARM.after:now and ALARM.before:08:30)) and (+TODAY and +INSTANCE))) and status:pending) or (((due:today or due.after:today) and due.before:tomorrow) and WT:AllDay and (status.not:recurring and status.not:waiting))
 report.wlist.sort=urgency-
 
 report.goals.columns=id,entry.age,TYPE,project,WT,GOAL,due.relative,description,urgency
@@ -89,8 +90,8 @@ uda.SEQ_NEXT.label=Next
 #           Timing Properties 
 uda.WT.type=string
 uda.WT.label=WorkTime
-uda.WT.default=NonSched
-uda.WT.values=PreWork,General,Essentials,Calm,PostWork,PreSleep,Break,Quantify!,AllDay!,NonSched!
+uda.WT.default=NonSched!
+uda.WT.values=Quantify!,AllDay!,NonSched! # append your custom worktimes here
 
 uda.GOAL.type=date
 uda.GOAL.label=Goal
@@ -128,8 +129,7 @@ urgency.user.tag.TEMPLATE.coefficient=-20
 urgency.user.tag.COMPLETED.coefficient=-30
 urgency.user.tag.DELETED.coefficient=-50
 
-# Projects
-urgency.user.project.Finances.coefficient=5
+
 # WorkTime
 urgency.uda.WT.Quantify!.coefficient=0
 urgency.uda.WT.AllDay!.coefficient=-200
@@ -178,7 +178,8 @@ urgency.user.tag.URG_N30.coefficient=-30
 urgency.user.tag.URG_N100.coefficient=-100
 
 
-# Uncomment this and just leave the worktime script handle
+
+# Uncomment this and just leave the worktime script handle it.
 #report.next.filter=
 #uda.taskwarrior-tui.task-report.show-info=false
 #news.version=2.6.0
