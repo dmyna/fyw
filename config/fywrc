@@ -12,7 +12,7 @@ source $FYW_DIR/config/aliases
 if test ! -e "$INIT_LOCK"; then
     mkdir "$FYSM_TEMP"
 
-    source "$FYSM_DIR"/config/init_scheduler
+    source "$FYW_DIR"/config/init_scheduler
     
     _task_poly_daemon_ >> /dev/null 2>&1 &
 
