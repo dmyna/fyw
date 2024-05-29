@@ -3,14 +3,19 @@
 PKG="fypm"
 
 # Fypm
-alias tir="$PKG timew track"
-alias tistart="$PKG timew start"
-alias tiend="$PKG timew end"
-alias ticart="$PKG timew start-correction"
-alias ticend="$PKG timew end-correction"
+alias tan="$PKG ta-annotate"
+alias tastart="$PKG ta-start"
+alias tastop="$PKG ta-stop"
+alias tin="$PKG ti-annotate"
+alias ticart="$PKG ti-start-correction"
+alias ticend="$PKG ti-end-correction"
+alias tistart="$PKG ti-start"
+alias tiend="$PKG ti-end"
+alias tir="$PKG ti-track"
 
 # TaskWarrior
 alias twui="taskwarrior-tui"
+alias talc="task const"
 alias tals="_tals blist"
 alias talss="_tals alarms"
 alias ttals="task TYPE.not:SubTask -Ghost list"
